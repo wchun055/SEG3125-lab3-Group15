@@ -1,0 +1,88 @@
+/* This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp> */
+
+/*body and footer styling to allow the footer to stay at the bottom of the page.*/
+body {
+  background-image: linear-gradient(to bottom, #06b606, #057405);
+  color: white;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  min-height: 100vh; /* Ensure the body spans the full height of the viewport */
+  text-align: center;
+}
+
+/* checkbox styling */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+footer {
+  margin-top: auto; /* Push the footer to the bottom */
+  text-align: right;
+}
+
+/* button styling */
+button:not(.tab button) {
+  margin-top: 15px;
+  border-radius: 10px;
+  border-color: grey;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: fit-content;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  /* border-top: none; */
+}
+
+/* Without width and height settings the images wont be visible.*/
+#displayProduct img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 200pt;
+  height: 200pt;
+}
+
+/* h1 styling */
+h1 {
+  font-size: 5em;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#displayProduct {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+}

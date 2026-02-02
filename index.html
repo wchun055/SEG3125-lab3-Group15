@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<! This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp>
+	<link href="styles.css" rel="stylesheet" type="text/css">
+  <title>Lab 2 - Group 15</title>
+</head>
+
+<body>
+
+<div>
+    <h1>FOOD MART</h1>
+</div>
+
+<!-- Tab links, each one with an onclick event associated with it -->
+<div class="tab">
+  <button class="tablinks" onclick="openInfo(event, 'Customer')">Customer</button>
+  <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
+  <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+</div>
+
+<!-- Tab content -->
+<div id="Customer" class="tabcontent">
+  <h3>Customer Profile Information</h3>
+  <p>Create your custom grocery product selection by creating a profile below.</p>
+  <p>Submit an empty profile to see all products with no restrictions.</p>
+    <form id="myForm">
+      <p>Select any diet restrictions:</p>
+        <label>Vegetarian</label>
+        <input type="checkbox" id="veggieCheck"><br>
+
+        <label>Gluten Free (Gluten Allergy)</label>
+        <input type="checkbox" id="glutenCheck"><br>
+
+        <label>Organic</label>
+        <input type="checkbox" id="organicCheck"><br>
+
+        <p>Select any accesibility options:</p>
+
+        <label>Larger Font Size</label>
+        <input type="checkbox" id="fontCheck"><br>
+
+        <label>Replace Text With Images</label>
+        <input type="checkbox" id="imageCheck"><br>
+
+        <label>Sort Products From Lowest To Highest Price</label>
+        <input type="checkbox" id="sortLow"><br>
+
+        <button id="customerSubmit">Submit Profile</button>
+    </form>
+</div>
+
+<div id="Products" class="tabcontent">
+  <h3>Your Products</h3>
+
+  <p>We preselected products based on your restrictions.</p>
+	<p>Choose items to buy:</p>
+
+	<div id="displayProduct">Submit your profile preferences to see your products.</div>
+
+	<button id="addCart" type="button" class="block" onclick="selectedItems()">Add Items To Cart</button>
+</div>
+
+<div id="Cart" class="tabcontent">
+  <h3>Your Cart</h3>
+  <div id="displayCart">No items have been selected.</div>
+</div>
+
+<script src="groceries.js"></script>
+<script src="main.js"></script>
+
+</body>
+<footer>
+  <p>Created by group 15: Winona, John, Rachel</p>
+</footer>
+</html>
