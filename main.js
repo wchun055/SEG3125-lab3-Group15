@@ -110,7 +110,7 @@ function saveProfile(){
 	const veggieCheck = document.getElementById("veggieCheck");
 	const glutenCheck = document.getElementById("glutenCheck");
 	const organicCheck = document.getElementById("organicCheck");
-	const fontCheck = document.getElementById("fontCheck");
+	const fontCheck = document.getElementById("fontCheckL");
 	const imageCheck = document.getElementById("imageCheck");
 
 	var diet = {
