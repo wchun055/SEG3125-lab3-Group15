@@ -112,6 +112,7 @@ function saveProfile(){
 	const organicCheck = document.getElementById("organicCheck");
 	const fontCheck = document.getElementById("fontCheckL");
 	const imageCheck = document.getElementById("imageCheck");
+	const sortingSelect = document.getElementById("sorting");
 
 	var diet = {
 		vegetarian : false,
@@ -145,9 +146,9 @@ function saveProfile(){
 		accesibility["image"] = true;
 	}
 
-	if (sortLow.checked){
-		accesibility["sortLow"] = true;
-	}
+	// sets sorting type based on user selection
+	accesibility["sortType"] = sortingSelect.value;
+
 
 	// Call with our specific diet list to update the product list.
 	//updateProducts() is done in the groceries.js file.
