@@ -113,11 +113,13 @@ function updateProducts(diet, accesibility){
 	}
 
 	updatedProduct = Array.from(updatedProductSet);
-	
-	if (accesibility["sortLow"] == true){
+
+	if (accesibility["sortType"] == "lowToHigh"){
 		updatedProduct.sort((a, b) => a.price - b.price);
 	}
-
+    else if (accesibility["sortType"] == "highToLow"){
+		updatedProduct.sort((a, b) => b.price - a.price);
+	}
 	populateProductList(updatedProduct, accesibility) // Populate the HTML with the updated product list.
 }
 
