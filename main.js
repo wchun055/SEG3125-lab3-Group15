@@ -25,9 +25,6 @@ function openInfo(evt, tabName) {
 function selectedItems(){
 	var ele = document.getElementsByName("product");
 	var chosenProducts = [];
-
-	console.log(ele);
-	
 	var c = document.getElementById('displayCart');
 	c.innerHTML = "";
 	

@@ -120,7 +120,6 @@ function categoryProducts(category, accesibility){
 	categoryProductSet = new Set([]);
 
 	for (let i = 0; i < products.length; i++){
-		console.log(products[i], products[i]["category"])
 		if (products[i]["category"] == category){
 			categoryProductSet.add(products[i]);
 		}
@@ -132,7 +131,6 @@ function categoryProducts(category, accesibility){
     else if (accesibility["sortType"] == "highToLow"){
 		categoryProductSet.sort((a, b) => b.price - a.price);
 	}
-	console.log(categoryProductSet)
 
 	return categoryProductSet;
 }
