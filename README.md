@@ -8,4 +8,4 @@ John Vitor Lopes (300319245)
 
 Rachel Olugbemiro (300302892)
 
-## Link:
+## Link: https://wchun055.github.io/SEG3125-lab3-Group15/
