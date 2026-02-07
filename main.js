@@ -23,9 +23,10 @@ function openInfo(evt, tabName) {
 // The purpose is to build the HTML to be displayed (a Paragraph).
 // We build a paragraph to contain the list of selected items, and the total price.
 function selectedItems(){
-	
 	var ele = document.getElementsByName("product");
 	var chosenProducts = [];
+
+	console.log(ele);
 	
 	var c = document.getElementById('displayCart');
 	c.innerHTML = "";
@@ -110,21 +111,14 @@ function saveProfile(){
 	const veggieCheck = document.getElementById("veggieCheck");
 	const glutenCheck = document.getElementById("glutenCheck");
 	const organicCheck = document.getElementById("organicCheck");
-	const fontCheck = document.getElementById("fontCheckL");
-	const imageCheck = document.getElementById("imageCheck");
-	const sortingSelect = document.getElementById("sorting");
-
+	
 	var diet = {
 		vegetarian : false,
 		glutenFree : false,
 		organic : false,
 	};
 
-	var accesibility = {
-		largeFont : false,
-		image : false,
-		sortLow : false
-	}
+	var accesibility = saveAccesibility();
 
 	if (veggieCheck.checked){
 		diet["vegetarian"] = true;
@@ -138,7 +132,80 @@ function saveProfile(){
 		diet["organic"] = true;
 	}
 
-	if (fontCheck.checked){
+	window.alert('Your profile has been submitted! Check the "Your Preselected Products" section to view your specially curated products from us.');
+
+	// Call with our specific diet list to update the product list.
+	//updateProducts() is done in the groceries.js file.
+	updateProducts(diet, accesibility);
+}
+
+function catUpdate(category){
+	var accesibility = saveAccesibility();
+
+	var catContent = document.getElementById("catContent");
+    catContent.innerHTML = "";
+
+	prodList = categoryProducts(category, accesibility);
+
+		
+	for (const item of prodList){
+		var productName = item["name"];
+		var checkbox = document.createElement("input");
+
+		checkbox.type = "checkbox";
+		checkbox.name = "product";
+		checkbox.value = productName;
+
+		catContent.appendChild(checkbox);
+		
+		if (accesibility["image"] == true){ // If the image setting is selected, replace labels with images.
+			var imageLabel = document.createElement('img');
+			
+			imageLabel.style.backgroundImage = "url(" + item["image"] + ")";
+
+			var label = document.createElement('label')
+			label.textContent = ("$" + item["price"].toFixed(2));
+			
+			if (accesibility["largeFont"] == true){ // If the large font setting is selected, ensure labels have large font size.
+				label.style.fontSize = "20pt";
+			}
+
+			var br = document.createElement("br");
+			br.style.marginBottom = "50pt"; // To ensure that multiple images are not stuck together we add some margin space per product option.
+
+			catContent.appendChild(imageLabel);
+			catContent.appendChild(label);
+			catContent.appendChild(br);   
+		}
+
+		else{
+			var label = document.createElement('label')
+			
+			if (accesibility["largeFont"] == true){ // If the large font setting is selected, ensure labels have large font size.
+				label.style.fontSize = "20pt";
+			}
+
+			label.htmlFor = productName;
+			label.appendChild(document.createTextNode(productName + " | $" + item["price"].toFixed(2))); // Prints product name and price, makes sure there are two decimals for price.
+
+			catContent.appendChild(label);
+			catContent.appendChild(document.createElement("br"));    
+		}
+	}
+}
+
+function saveAccesibility(){
+	const fontCheck = document.getElementById("fontCheckL");
+	const imageCheck = document.getElementById("imageCheck");
+	const sortingSelect = document.getElementById("sorting");
+
+	var accesibility = {
+		largeFont : false,
+		image : false,
+		sortLow : false
+	}
+
+		if (fontCheck.checked){
 		accesibility["largeFont"] = true;
 	}
 
@@ -149,11 +216,5 @@ function saveProfile(){
 	// sets sorting type based on user selection
 	accesibility["sortType"] = sortingSelect.value;
 
-
-	// Call with our specific diet list to update the product list.
-	//updateProducts() is done in the groceries.js file.
-	updateProducts(diet, accesibility);
+	return accesibility;
 }
-
-//When the customer submits their profile, we begin updating their product list.
-document.getElementById("customerSubmit").addEventListener("click", saveProfile); 
