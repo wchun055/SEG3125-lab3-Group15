@@ -7,7 +7,7 @@ body {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
   min-height: 100vh; /* Ensure the body spans the full height of the viewport */
-  text-align: center;
+  font-size: larger;
 }
 
 /* checkbox styling */
@@ -33,7 +33,6 @@ button:not(.tab button) {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  width: fit-content;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -59,19 +58,39 @@ button:not(.tab button) {
 
 /* Style the tab content */
 .tabcontent {
+  background-color: #ccc;
   display: none;
-  padding: 6px 12px;
+  padding: 15px 12px;
   border: 1px solid #ccc;
+  height: 70vh;
+  color: black;
   /* border-top: none; */
 }
 
+#displayProduct {
+  padding: 20pt;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-self: center;
+  overflow: scroll;
+}
+
+.itemDiv{
+  display: flex;
+  align-items: center;
+  padding: 20pt;
+  margin: 20pt;
+  border: 1px solid black;
+}
+
 /* Without width and height settings the images wont be visible.*/
-#displayProduct img {
+img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 200pt;
-  height: 200pt;
+  width: 100pt;
+  height: 100pt;
 }
 
 /* h1 styling */
@@ -81,25 +100,49 @@ h1 {
   margin-bottom: 0;
 }
 
+#catContent {
+  padding-top: 20pt;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-self: center;
+  overflow: scroll;
+}
+
 .categoryMenu {
   display: flex;
   justify-content: center;
 }
 
 .catTab {
-  background-color: blue;
-  float: left;
   border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  float: left;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
 }
 
-#catContent img {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 200pt;
-  height: 200pt;
+.catTab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.catTab button.active {
+  background-color: #ccc;
+}
+
+#addCart{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20pt;
+  display: flex;
+  align-self: center;
+}
+
+#customerSubmit {
+  padding: 20pt;
+  display: flex;
+  align-self: center;
 }

@@ -57,12 +57,15 @@ function populateProductList(prodList, accesibility){
 	for (const item of prodList){
 		var productName = item["name"];
 		var checkbox = document.createElement("input");
+		var itemDiv = document.createElement("div");
+
+		itemDiv.className = "itemDiv";
 
 		checkbox.type = "checkbox";
 		checkbox.name = "product";
 		checkbox.value = productName;
 
-		displayProduct.appendChild(checkbox);
+		itemDiv.appendChild(checkbox);
 		
 		if (accesibility["image"] == true){ // If the image setting is selected, replace labels with images.
 			var imageLabel = document.createElement('img');
@@ -79,9 +82,10 @@ function populateProductList(prodList, accesibility){
 			var br = document.createElement("br");
 			br.style.marginBottom = "50pt"; // To ensure that multiple images are not stuck together we add some margin space per product option.
 
-			displayProduct.appendChild(imageLabel);
-			displayProduct.appendChild(label);
-			displayProduct.appendChild(br);   
+			itemDiv.appendChild(imageLabel);
+			itemDiv.appendChild(label);
+			itemDiv.appendChild(br);   
+			displayProduct.appendChild(itemDiv);
 		}
 
 		else{
@@ -94,7 +98,8 @@ function populateProductList(prodList, accesibility){
 			label.htmlFor = productName;
 			label.appendChild(document.createTextNode(productName + " | $" + item["price"].toFixed(2))); // Prints product name and price, makes sure there are two decimals for price.
 
-			displayProduct.appendChild(label);
+			itemDiv.appendChild(label);
+			displayProduct.appendChild(itemDiv);
 			displayProduct.appendChild(document.createElement("br"));    
 		}
 	}
@@ -148,12 +153,15 @@ function catUpdate(category){
 	for (const item of prodList){
 		var productName = item["name"];
 		var checkbox = document.createElement("input");
+		var itemDiv = document.createElement("div");
+
+		itemDiv.className = "itemDiv";
 
 		checkbox.type = "checkbox";
 		checkbox.name = "product";
 		checkbox.value = productName;
 
-		catContent.appendChild(checkbox);
+		itemDiv.appendChild(checkbox);
 		
 		if (accesibility["image"] == true){ // If the image setting is selected, replace labels with images.
 			var imageLabel = document.createElement('img');
@@ -170,9 +178,10 @@ function catUpdate(category){
 			var br = document.createElement("br");
 			br.style.marginBottom = "50pt"; // To ensure that multiple images are not stuck together we add some margin space per product option.
 
-			catContent.appendChild(imageLabel);
-			catContent.appendChild(label);
-			catContent.appendChild(br);   
+			itemDiv.appendChild(imageLabel);
+			itemDiv.appendChild(label);
+			itemDiv.appendChild(br);   
+			catContent.appendChild(itemDiv);   
 		}
 
 		else{
@@ -185,7 +194,8 @@ function catUpdate(category){
 			label.htmlFor = productName;
 			label.appendChild(document.createTextNode(productName + " | $" + item["price"].toFixed(2))); // Prints product name and price, makes sure there are two decimals for price.
 
-			catContent.appendChild(label);
+			itemDiv.appendChild(label);
+			catContent.appendChild(itemDiv);
 			catContent.appendChild(document.createElement("br"));    
 		}
 	}
