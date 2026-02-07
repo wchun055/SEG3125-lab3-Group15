@@ -1,3 +1,6 @@
+//saveProfile > updateProducts > populateProductList
+// selectedItems > getTotalPrice
+
 // Array of products, each product is an object with different fieldset.
 // A set of ingredients should be added to products.
 
@@ -8,7 +11,9 @@ var products = [
 		glutenFree: true,
         organic: true,
 		image: "assets/lettuce.jpg",
-		price: 1.99
+		price: 1.99,
+		category: "vegetable"
+		
 	},
 	{
 		name: "whole wheat bread",
@@ -16,7 +21,8 @@ var products = [
 		glutenFree: false,
         organic: false,
 		image: "assets/whole-wheat-bread.jpg",
-		price: 2.35
+		price: 2.35,
+		category: "bakery"
 	},
 	{
 		name: "salmon",
@@ -24,7 +30,8 @@ var products = [
 		glutenFree: true,
         organic: true,
 		image: "assets/salmon.jpg",
-		price: 10.00
+		price: 10.00,
+		category: "meat"
 	},
     {
 		name: "ground beef",
@@ -32,7 +39,8 @@ var products = [
 		glutenFree: true,
         organic: false,
 		image: "assets/ground-beef.jpg",
-		price: 15.49
+		price: 15.49,
+		category: "meat"
 	},
     {
 		name: "potato chips",
@@ -40,7 +48,8 @@ var products = [
 		glutenFree: false,
         organic: false,
 		image: "assets/potato-chips.jpg",
-		price: 4.30
+		price: 4.30,
+		category: "pantry"
 	},
     {
 		name: "mango",
@@ -48,7 +57,8 @@ var products = [
 		glutenFree: true,
         organic: true,
 		image: "assets/mango.png",
-		price: 5.00
+		price: 5.00,
+		category: "fruit"
 	},
     {
 		name: "frozen pizza",
@@ -56,7 +66,8 @@ var products = [
 		glutenFree: false,
         organic: false,
 		image: "assets/frozen-pizza.jpg",
-		price: 4.99
+		price: 4.99,
+		category: "bakery"
 	},
     {
 		name: "tomato",
@@ -64,7 +75,8 @@ var products = [
 		glutenFree: true,
         organic: true,
 		image: "assets/tomato.jpg",
-		price: 0.99
+		price: 0.99,
+		category: "vegetable"
 	},
     {
 		name: "strawberry",
@@ -72,7 +84,8 @@ var products = [
 		glutenFree: false,
         organic: true,
 		image: "assets/strawberry.jpg",
-		price: 5.45
+		price: 5.45,
+		category: "fruit"
 	},
     {
 		name: "celery",
@@ -80,9 +93,47 @@ var products = [
 		glutenFree: true,
         organic: true,
 		image: "assets/celery.jpg",
-		price: 16.00
+		price: 16.00,
+		category: "vegetable"
+	},
+	{
+		name: "tropical juice",
+		vegetarian: false,
+		glutenFree: true,
+        organic: false,
+		image: "assets/tropical-juice.jpg",
+		price: 6.79,
+		category: "juice"
+	},
+	{
+		name: "cheese",
+		vegetarian: false,
+		glutenFree: true,
+        organic: true,
+		image: "assets/cheese.png",
+		price: 3.49,
+		category: "dairy"
 	}
 ];
+
+function categoryProducts(category, accesibility){
+	categoryProductSet = new Set([]);
+
+	for (let i = 0; i < products.length; i++){
+		if (products[i]["category"] == category){
+			categoryProductSet.add(products[i]);
+		}
+	}
+
+	if (accesibility["sortType"] == "lowToHigh"){
+		categoryProductSet.sort((a, b) => a.price - b.price);
+	}
+    else if (accesibility["sortType"] == "highToLow"){
+		categoryProductSet.sort((a, b) => b.price - a.price);
+	}
+
+	return categoryProductSet;
+}
 
 // Creating a product list that adheres to the customer diet/profile.
 function updateProducts(diet, accesibility){

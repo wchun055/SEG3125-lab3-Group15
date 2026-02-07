@@ -3,7 +3,7 @@
 <head>
 	<! This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp>
 	<link href="styles.css" rel="stylesheet" type="text/css">
-  <title>Lab 2 - Group 15</title>
+  <title>Lab 3 - Group 15</title>
 </head>
 
 <body>
@@ -14,8 +14,9 @@
 
 <!-- Tab links, each one with an onclick event associated with it -->
 <div class="tab">
-  <button class="tablinks" onclick="openInfo(event, 'Customer')">Customer</button>
-  <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
+  <button class="tablinks" onclick="openInfo(event, 'Customer')">Customer Profile</button>
+  <button class="tablinks" onclick="openInfo(event, 'Products')">All Products</button>
+  <button class="tablinks" onclick="openInfo(event, 'PreselectedProducts')">Your Preselected Products</button>
   <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
 </div>
 
@@ -56,19 +57,35 @@
         </select>
         <br>
 
-        <button id="customerSubmit">Submit Profile</button>
+        <button id="customerSubmit" onclick="saveProfile()">Submit Profile</button>
     </form>
 </div>
 
 <div id="Products" class="tabcontent">
-  <h3>Your Products</h3>
+  <h3>View Our Products</h3>
+    <div class="categoryMenu">
+      <div class="catTab" onclick="catUpdate('vegetable')">Vegetable</div>
+      <div class="catTab" onclick="catUpdate('fruit')">Fruit</div>
+      <div class="catTab" onclick="catUpdate('meat')">Meat</div>
+      <div class="catTab" onclick="catUpdate('pantry')">Pantry</div>
+      <div class="catTab" onclick="catUpdate('juice')">Juice</div>
+      <div class="catTab" onclick="catUpdate('dairy')">Dairy</div>
+    </div>
 
-  <p>We preselected products based on your restrictions.</p>
-	<p>Choose items to buy:</p>
+    <div id="catContent">
+      Pick a category to browse all of our selection.
+    </div>
+    <button id="addCart" type="button" class="block" onclick="selectedItems('displayProduct')">Update Cart</button>
+</div>
 
-	<div id="displayProduct">Submit your profile preferences to see your products.</div>
+<div id="PreselectedProducts" class="tabcontent">
+    <h3>Your Preselected Products</h3>
+    <p>We preselected products based on your restrictions.</p>
+    <p>Choose items to buy:</p>
 
-	<button id="addCart" type="button" class="block" onclick="selectedItems()">Add Items To Cart</button>
+    <div id="displayProduct">A profile has not been submitted yet. Submit your profile preferences to see your products.</div>
+
+    <button id="addCart" type="button" class="block" onclick="selectedItems('displayProduct')">Update Cart</button>
 </div>
 
 <div id="Cart" class="tabcontent">
