@@ -118,6 +118,7 @@ var products = [
 
 function categoryProducts(category, accesibility){
 	categoryProductSet = new Set([]);
+	categoryProduct = [];
 
 	for (let i = 0; i < products.length; i++){
 		if (products[i]["category"] == category){
@@ -129,14 +130,16 @@ function categoryProducts(category, accesibility){
 		categoryProductSet = products;
 	}
 
+	categoryProduct = Array.from(categoryProductSet);
+
 	if (accesibility["sortType"] == "lowToHigh"){
-		categoryProductSet.sort((a, b) => a.price - b.price);
+		categoryProduct.sort((a, b) => a.price - b.price);
 	}
     else if (accesibility["sortType"] == "highToLow"){
-		categoryProductSet.sort((a, b) => b.price - a.price);
+		categoryProduct.sort((a, b) => b.price - a.price);
 	}
 
-	return categoryProductSet;
+	return categoryProduct;
 }
 
 // Creating a product list that adheres to the customer diet/profile.
