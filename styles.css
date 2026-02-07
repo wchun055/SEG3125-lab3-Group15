@@ -7,7 +7,6 @@ body {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
   min-height: 100vh; /* Ensure the body spans the full height of the viewport */
-  text-align: center;
 }
 
 /* checkbox styling */
@@ -65,13 +64,30 @@ button:not(.tab button) {
   /* border-top: none; */
 }
 
+#displayProduct {
+  padding: 20pt;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-self: center;
+  overflow: scroll;
+}
+
+.itemDiv{
+  display: flex;
+  align-items: center;
+  padding: 20pt;
+  margin: 20pt;
+  border: 1px solid #ccc;
+}
+
 /* Without width and height settings the images wont be visible.*/
-#displayProduct img {
+img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 200pt;
-  height: 200pt;
+  width: 100pt;
+  height: 100pt;
 }
 
 /* h1 styling */
@@ -79,6 +95,15 @@ h1 {
   font-size: 5em;
   text-align: center;
   margin-bottom: 0;
+}
+
+#catContent {
+  padding-top: 20pt;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-self: center;
+  overflow: scroll;
 }
 
 .categoryMenu {
@@ -96,10 +121,16 @@ h1 {
   transition: 0.3s;
 }
 
-#catContent img {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 200pt;
-  height: 200pt;
+#addCart{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20pt;
+  display: flex;
+  align-self: center;
+}
+
+#customerSubmit {
+  padding: 20pt;
+  display: flex;
+  align-self: center;
 }

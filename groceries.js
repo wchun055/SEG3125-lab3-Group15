@@ -125,6 +125,10 @@ function categoryProducts(category, accesibility){
 		}
 	}
 
+	if (category == "all") {
+		categoryProductSet = products;
+	}
+
 	if (accesibility["sortType"] == "lowToHigh"){
 		categoryProductSet.sort((a, b) => a.price - b.price);
 	}
