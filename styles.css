@@ -62,7 +62,6 @@ button:not(.tab button) {
   display: none;
   padding: 15px 12px;
   border: 1px solid #ccc;
-  height: 70vh;
   color: black;
   /* border-top: none; */
 }
@@ -71,7 +70,7 @@ button:not(.tab button) {
   padding: 20pt;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-self: center;
   overflow: scroll;
 }
@@ -101,17 +100,23 @@ h1 {
 }
 
 #catContent {
-  padding-top: 20pt;
   display: flex;
+  padding-top: 20pt;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-self: center;
+  width: 100%;
   overflow: scroll;
+}
+
+.prodDiv {
+  display: flex;
+  padding: 20pt;
 }
 
 .categoryMenu {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .catTab {
