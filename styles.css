@@ -78,6 +78,8 @@ button:not(.tab button) {
 .itemDiv{
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 300pt;
   padding: 20pt;
   margin: 20pt;
   border: 1px solid black;
